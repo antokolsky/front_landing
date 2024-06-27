@@ -78,7 +78,10 @@
   &__images {
     position: relative;
     --radius: 8px;
+    width: auto;
+    height: auto;
     img {
+      box-sizing: content-box;
       border-radius: 24px;
       border: var(--radius) var(--white) solid;
       &:nth-of-type(1){
