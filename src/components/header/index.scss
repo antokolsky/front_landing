@@ -1,0 +1,104 @@
+@import '../../style/mixin.scss';
+
+.header {
+  margin: 64px 94px 65px 94px;
+  display: flex;
+  flex-direction: column;
+  gap: 59px;
+  width: 100%;
+
+  &__rows {
+    display: flex;
+    flex-direction: row;
+    gap: 37px;
+    &:first-of-type {
+      border-radius: 16px;
+      background-color: var(--white);
+      padding: 0 78px 91px 78px;
+    }
+    &:last-of-type {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 41px;
+    }
+  }
+
+  &__logo {
+    @include font-params(24px, 200, 29.05px);
+    text-align: left;
+    padding-top: 68px;
+
+    span {
+      color: var(--blue);
+      font-weight: 400;
+    }
+  }
+
+  &__caption {
+    @include font-params(54px, 600, 65.35px);
+    text-align: left;
+    padding-top: 113px;
+  }
+
+  &__text {
+    @include font-params(18px, 400, 21.78px);
+    display: inline-block;
+    color: var(--dark-gray);
+    text-align: left;
+    max-width: 421px;
+    word-wrap: break-word;
+    padding-top: 24px
+  }
+
+  &__tooltip {
+    @include font-params(24px, 400, 29.05px);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    border-radius: 50px;
+    height: 77px;
+    width: 548;
+    background-color: var(--white);
+    margin-left: 78px;
+    padding: 24px 34px 24px 34px;
+  }
+
+  &__button {
+    --button-size: 74px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blue);
+    width: var(--button-size);
+    height: var(--button-size);
+    border-radius: calc(var(--button-size) / 2);
+  }
+
+  &__images {
+    position: relative;
+    --radius: 8px;
+    img {
+      border-radius: 24px;
+      border: var(--radius) var(--white) solid;
+      &:nth-of-type(1){
+        @include image-placement(392px, 262px, 64px, 0px, var(--radius), 10);
+      }
+      &:nth-of-type(2){
+        @include image-placement(202px, 302px, 174px, 300px, var(--radius), 20);
+      }
+      
+      &:nth-of-type(3){
+        @include image-placement(159px, 241px, 41px, 498px, var(--radius), 10);
+      }
+      
+      &:nth-of-type(4){
+        @include image-placement(292px, 187px, 362px, 33px, var(--radius), 30);
+      }
+      
+      &:nth-of-type(5){
+        @include image-placement(297px, 346px, 326px, 367px, var(--radius), 10);
+      }
+    }
+  }
+}

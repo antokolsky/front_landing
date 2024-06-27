@@ -1,0 +1,14 @@
+@mixin font-params($size, $weight, $height) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $height;
+}
+
+@mixin image-placement($width, $height, $top, $left, $border, $z) {
+  position: absolute;
+  max-width: calc($width + $border + $border);
+  max-height: calc($height + $border + $border);
+  left: $left;
+  top: $top;
+  z-index: $z;
+}
