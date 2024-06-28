@@ -1,0 +1,18 @@
+@import '../../style/mixin.scss';
+
+.load-more {
+  @include font-params(24px, 500, 29.05px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--medium-gray);
+  width: 100%;
+  padding: 10px 0 10px 0;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+
+  &__disabled {
+    cursor: auto;
+  }
+}

@@ -1,0 +1,157 @@
+@import '../../style/mixin.scss';
+
+.card {
+  width: 100%;
+  background-color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 56px;
+  padding: 32px 106px 32px 106px;
+  border-radius: 16px;
+  gap: 10px;
+
+  &>div {
+    flex-grow: 1;
+    width: 50%;
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__data-text {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+  }
+
+  &__button {
+    @include font-params(20px, 400, 24.2px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0 16px 0;
+    border-radius: 8px;
+    background-color: var(--blue);
+  }
+
+  &__caption {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 40px 40px 16px 40px;
+
+    &>h3 {
+      @include font-params(28px, 500, 33.89px);
+      max-width: 251px;
+      word-wrap: break-word;
+    }
+
+    &>span {
+      @include font-params(30px, 500, 36.31px);
+      padding: 16px 40px 16px 0px;
+
+      &::after {
+        content: " $";
+      }
+    }
+  }
+
+  &__author {
+    @include font-params(20px, 500, 24.2px);
+    margin: 16px 40px 16px 40px;
+  }
+
+  &__text {
+    @include font-params(18px, 400, 21.78px);
+    max-width: 440px;
+    word-wrap: break-word;
+    margin: 16px 40px 16px 40px;
+  }
+
+  img {
+    width: 100px; // REMOVE
+    height: 100px; // REMOVE
+  }
+}
+
+.image {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  height: 560px;
+
+  &__right {
+    rotate: 180deg;
+  }
+
+  img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    padding: 0;
+    width: 46px;
+    height: 86px;
+    background-color: rgba(var(--white), 0.2);
+  }
+}
+
+.image-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 20px;
+
+  &>div {
+    width: 86px;
+    height: 86px;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+
+    &>img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.dimension {
+  display: grid;
+  list-style-type: none;
+  padding: 0;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: max-content max-content max-content;
+  grid-auto-flow: column;
+  column-gap: 24px;
+  @include font-params(20px, 500, 24.2px);
+  margin: 8px 40px 8px 40px;
+  width: auto;
+
+  &__name {
+    @include font-params(15px, 300, 18.15px);
+  }
+
+  &__value {
+    @include font-params(15px, 400, 18.15px);
+  }
+
+  li::first-letter {
+    text-transform: capitalize;
+  }
+}
