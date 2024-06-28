@@ -1,6 +1,6 @@
 import { cards } from "../../data";
 
-const rootPath = "./front_landing/";
+const rootPath = process.env.NODE_ENV === 'development' ? "./front_landing/" : "./";
 const svgArrow = `<svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <line x1="0.707107" y1="19.2929" x2="20.7071" y2="39.2929" stroke="black" stroke-width="2"/>
 <line x1="20.7071" y1="0.707107" x2="0.707111" y2="20.7071" stroke="black" stroke-width="2"/>
