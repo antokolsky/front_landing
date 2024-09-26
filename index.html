@@ -37,11 +37,29 @@
       </div>
     </div>
   </header>
-  <main class="container" id="cards">
+  <main class="container">
+    <article id="cards"></article>
+    <button class="container load-more" id="load-more">
+      Show more
+    </button>
+
+    <!-- Examples of 3D models -->
+    <section id="threed">
+      <div class="container threed">
+        <h3>Examples of 3D models</h3>
+        <p>
+          If you want to purchase a digital model in our gallery, we will show you two fragments of a model similar
+          to these. The viewport on the left is a complete model in low quality. The viewport on the right is part of
+          the high-quality model. After confirming the transfer of funds, you will receive a complete model in high
+          quality.
+        </p>
+        <div class="threed__viewers">
+          <div class="stlviewer" data-src="/model/lowpoly/v1.stl"></div>
+          <div class="stlviewer" data-src="/model/highpoly/v1.stl"></div>
+        </div>
+      </div>
+    </section>
   </main>
-  <button class="container load-more" id="load-more">
-    Смотреть еще
-  </button>
   <footer class="container footer"> </footer>
   <script type="module" src="./src/index.js"></script>
 </body>

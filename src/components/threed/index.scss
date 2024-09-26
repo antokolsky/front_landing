@@ -1,0 +1,46 @@
+.threed {
+  width: 100%;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  margin-top: 72px;
+  padding: 32px 64px;
+  border-radius: 16px;
+  gap: 40px;
+
+  &>h3 {
+    @include font-params(28px, 500, 32px);
+  }
+
+  &>p {
+    @include font-params(22px, 300, 28px);
+  }
+
+  &__viewers {
+    display: flex;
+    gap: 20px;
+  }
+}
+
+.stlviewer {
+  width: 100%;
+  height: 600px;
+  border-radius: 8px;
+  background: var(--black-night);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+  canvas {
+    border-radius: 8px;
+  }
+
+  .loader {
+    font-family: monospace;
+    position: absolute;
+    width: 100px;
+    text-align:end;
+    color: var(--white);
+  }
+}
