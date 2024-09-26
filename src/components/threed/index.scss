@@ -27,4 +27,20 @@
   height: 600px;
   border-radius: 8px;
   background: var(--black-night);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+  canvas {
+    border-radius: 8px;
+  }
+
+  .loader {
+    font-family: monospace;
+    position: absolute;
+    width: 100px;
+    text-align:end;
+    color: var(--white);
+  }
 }
