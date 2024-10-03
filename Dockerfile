@@ -1,5 +1,5 @@
 FROM node:18-alpine as build
 WORKDIR /app
-COPY package* ./
+COPY ./ ./
 RUN npm ci
 RUN npm run build
