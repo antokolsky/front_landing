@@ -24,32 +24,32 @@ jobs:
                 file: Dockerfile
                 tags: ${{ env.LANDING_IMAGE }}
     
-    # deploy:
-    #     runs-on: ubuntu-latest
-    #     needs: build
-    #     steps:
-    #         - name: checkout
-    #           uses: actions/checkout@v3
-    #         - name: copy docker-compose.yaml
-    #           uses: appleboy/scp-action@master
-    #           with: 
-    #             host: ${{ secrets.HOST }}
-    #             username: ${{ secrets.HOST_USERNAME }}
-    #             key: ${{ secrets.SSK_KEY }}
-    #             passphrase: ${{ secrets.SSH_PHRASE }}
-    #             source: "docker-compose.yaml"
-    #             target: "antokolsky"
-    #             debug: true
-    #         - name: ssh to remote server
-    #           uses: appleboy/ssh-action@master
-    #           with:
-    #             host: ${{ secrets.HOST }}
-    #             username: ${{ secrets.HOST_USERNAME }}
-    #             key: ${{ secrets.SSK_KEY }}
-    #             passphrase: ${{ secrets.SSH_PHRASE }}
-    #             script: |
-    #               cd ~/antokolsky
-    #               sudo docker compose stop
-    #               sudo docker compose pull ${{ env.LANDING_IMAGE }}
-    #               sudo docker compose up -d
-    #               sudo docker image prune -f
+    deploy:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - name: checkout
+              uses: actions/checkout@v3
+            - name: copy docker-compose.yaml
+              uses: appleboy/scp-action@master
+              with: 
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.HOST_USERNAME }}
+                key: ${{ secrets.SSK_KEY }}
+                passphrase: ${{ secrets.SSH_PHRASE }}
+                source: "docker-compose.yaml"
+                target: "antokolsky"
+                debug: true
+            - name: ssh to remote server
+              uses: appleboy/ssh-action@master
+              with:
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.HOST_USERNAME }}
+                key: ${{ secrets.SSK_KEY }}
+                passphrase: ${{ secrets.SSH_PHRASE }}
+                script: |
+                  cd ~/antokolsky
+                  sudo docker compose stop
+                  sudo docker compose pull ${{ env.LANDING_IMAGE }}
+                  sudo docker compose up -d
+                  sudo docker image prune -f
