@@ -1,3 +1,9 @@
+/* Base style */
+@import "./common.scss";
+
+/* Shared */
+@import "./tom-select.scss";
+
 /* Components */
 @import "../components/grid/index.scss";
 @import "../components/typography/index.scss";
@@ -6,6 +12,5 @@
 @import "../components/cards/index.scss";
 @import "../components/threed/index.scss";
 @import "../components/subscribe/index.scss";
+@import "../components/footer/index.scss";
 
-/* Base style */
-@import "./common.scss";

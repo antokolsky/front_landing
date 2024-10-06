@@ -1,0 +1,44 @@
+.footer {
+  margin-top: 57px;
+  background: var(--black-gray);
+  border-radius: 16px 16px 0 0;
+  padding: 0 106px 57px;
+  display: grid;
+  grid-gap: 15px;
+
+  &__content {
+    display: flex;
+    gap: 347px;
+
+    &>.column-one p {
+      @include font-params(22px, 400, 28px);
+      color: var(--white);
+      padding: 16px 0;
+    }
+
+    &>.column-two {
+      &>p {
+        @include font-params(18px, 400, 26px);
+        color: var(--white);
+        padding: 16px 0;
+      }
+      &>a {
+        @include font-params(20px, 400, 28px);
+        text-decoration: none;
+        color: var(--white);
+
+        &:hover {
+          text-decoration: underline 2px solid var(--blue);
+        }
+      }
+    }
+  }
+
+  &__copyright {
+    @include font-params(18px, 400, 26px);
+    padding: 12px 0;
+    width: 100%;
+    color: var(--white);
+    border-top: 1px solid var(--white);
+  }
+}
