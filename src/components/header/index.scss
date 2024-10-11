@@ -25,13 +25,21 @@
   }
 
   &__logo {
-    @include font-params(24px, 200, 29.05px);
+    @include font-params(24px, 300, 39.6px);
     text-align: left;
     padding-top: 68px;
 
-    span {
+    :first-child {
+      color: var(--black);
+      background: var(--blue);
+      padding: 6px 0 6px 6px;
+      border-radius: 6px 0 0 6px;
+    }
+    :last-child {
       color: var(--blue);
-      font-weight: 400;
+      background: var(--black);
+      padding: 6px 6px 6px 0;
+      border-radius: 0 6px 6px 0;
     }
   }
 
