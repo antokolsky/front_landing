@@ -12,3 +12,22 @@
   top: $top;
   z-index: $z;
 }
+
+@mixin blue-btn {
+  border: none;
+  cursor: pointer;
+  background-color: var(--blue);
+
+  &:hover {
+    background-color: var(--blueish);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:active {
+    border: none;
+    background-color: var(--bright-blue);
+  }
+}

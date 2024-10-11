@@ -1,4 +1,6 @@
 import { cards } from "../../data";
+import { purchaseDialogOpen } from "../purchase-form";
+
 
 const rootPath = process.env.NODE_ENV === 'development' ? "./front_landing/" : "./";
 const svgArrow = `<svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +43,7 @@ const createCardData = (
   const dimensionCard = createDimensionCard(params);
   const cardText = createElement("span", "card__text", text);
   // Button
-  const button = createElement("a", "card__button", "Приобрести арт");
+  const button = createElement("button", "card__button", "Приобрести арт");
   const imageList = createImageList(imagesAmount, number);
 
   containerText.append(
@@ -55,6 +57,9 @@ const createCardData = (
     containerText,
     imageList
   );
+  button.addEventListener("click", function () {
+    purchaseDialogOpen(caption);
+  });
   return container;
 };
 
