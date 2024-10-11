@@ -30,11 +30,11 @@
     </div>
     <div class="header__rows">
       <span class="header__tooltip">Buy the 3D model of your dream sculpture</span>
-      <div class="header__button">
+      <button class="header__button">
         <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 18.5L19 0.5M19 0.5V16.25M19 0.5H3.25" stroke="#242424" />
         </svg>
-      </div>
+      </button>
     </div>
   </header>
   <main class="container">
@@ -133,6 +133,44 @@
       </div>
     </div>
   </footer>
+  <dialog id="purchase">
+    <div class="purchase">
+      <div class="container purchase__dialog">
+        <button class="close-btn" id="close-btn" tabindex="-1">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9.22266" y="7.77832" width="24" height="2" transform="rotate(45 9.22266 7.77832)" fill="currentColor"/>
+            <rect x="26.1914" y="9.19238" width="24" height="2" transform="rotate(135 26.1914 9.19238)" fill="currentColor"/>
+          </svg>
+        </button>
+        <div class="purchase__preamble">
+          <p>
+            To purchase the sculpture you like, enter the name of the sculpture (lot number?).<br />
+            Our manager will contact you and discuss all the details of the purchase.
+          </p>
+        </div>
+        <div class="purchase__content">
+          <form class="purchase__form">
+            <label>
+              *Enter the name of the sculpture (Lot No.?)
+              <input type="text" name="lot" id="lot" placeholder="Horse and man" autofocus tabindex="0" />
+            </label>
+            <label>
+              *Enter your email address
+              <input type="text" name="email" placeholder="your@email.com" />
+            </label>
+            <label>
+              Enter your phone number
+              <input type="text" name="phone" placeholder="+1 555 555 5555" />
+            </label>
+            <button type="submit">
+              Send
+            </button>
+            <p class="hint">*Required field</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </dialog>
   <script type="module" src="./src/index.js"></script>
 </body>
 </html>

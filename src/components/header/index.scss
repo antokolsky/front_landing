@@ -77,10 +77,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--blue);
     width: var(--button-size);
     height: var(--button-size);
     border-radius: calc(var(--button-size) / 2);
+    @include blue-btn();
   }
 
   &__images {

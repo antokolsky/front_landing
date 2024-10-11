@@ -19,11 +19,17 @@ body {
 
 body {
   background-color: var(--light-blue);
+
+  &.scroll-lock {
+    overflow: hidden;
+  }
 }
 
 :root {
   --light-blue: #F1F1F1;
   --blue: #83DECC;
+  --blueish: #75DAC7;
+  --bright-blue: #4ACDB4;
   --white: #FFFFFF;
   --light-gray: #F9F9F9;
   --gray: #F0F0F0;
