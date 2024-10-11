@@ -23,6 +23,7 @@
 
   &__data-text {
     display: flex;
+    height: 454px;
     flex-direction: column;
     background-color: var(--light-gray);
     border-radius: 8px;
@@ -44,6 +45,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 40px 40px 16px 40px;
+    align-items: center;
 
     &>h3 {
       @include font-params(28px, 500, 33.89px);
@@ -94,6 +96,7 @@
 
   img {
     width: auto;
+    max-width: 420px;
     height: 100%;
     object-fit: contain;
   }
@@ -133,14 +136,15 @@
 
 .dimension {
   display: grid;
+  flex-grow: 1;
   list-style-type: none;
   padding: 0;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: max-content max-content max-content;
+  grid-template-columns: max-content;
   grid-auto-flow: column;
   column-gap: 24px;
   @include font-params(20px, 500, 24.2px);
-  margin: 8px 40px 8px 40px;
+  margin: 24px 40px 95px 40px;
   width: auto;
 
   &__name {
