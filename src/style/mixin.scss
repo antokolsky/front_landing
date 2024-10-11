@@ -30,4 +30,10 @@
     border: none;
     background-color: var(--bright-blue);
   }
+
+  &:disabled {
+    color: rgb(0 0 0 / 40%);
+    background-color: var(--lite-blue);
+    cursor: default;
+  }
 }

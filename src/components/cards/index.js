@@ -8,11 +8,28 @@ const svgArrow = `<svg width="22" height="40" viewBox="0 0 22 40" fill="none" xm
 <line x1="20.7071" y1="0.707107" x2="0.707111" y2="20.7071" stroke="black" stroke-width="2"/>
 </svg>`;
 
-export const cardLoader = (containerElementId, buttonElementId) => {
-  const container = document.querySelector(containerElementId);
-  const button = document.querySelector(buttonElementId);
+let container;
+let loadButton;
+const cardsPerBatch = 8;
+let cardPosition = 0;
 
-  container.append(...cards.map(createCard));
+const addCards = () => {
+  for (let i=0; i<cardsPerBatch; i++) {
+    container.append(createCard(cards[cardPosition], cardPosition));
+    cardPosition++;
+    if (cardPosition == cards.length) {
+      loadButton.setAttribute("disabled", "");
+      loadButton.textContent = "No more samples to load";
+      break;
+    }
+  }
+};
+
+export const cardLoader = (containerElementId, buttonElementId) => {
+  container = document.querySelector(containerElementId);
+  loadButton = document.querySelector(buttonElementId);
+  loadButton.addEventListener("click", addCards);
+  addCards();
 };
 
 const createCard = (card, number) => {
@@ -26,7 +43,7 @@ const createCard = (card, number) => {
 };
 
 const createCardData = (
-  { caption, price, author, params, text, imagesAmount },
+  { id, author, caption, height, width, length, price, imagesAmount },
   number
 ) => {
   // Container
@@ -40,24 +57,22 @@ const createCardData = (
   // Author
   const cardAuthor = createElement("span", "card__author", author);
   // Dimension
-  const dimensionCard = createDimensionCard(params);
-  const cardText = createElement("span", "card__text", text);
+  const dimensionCard = createDimensionCard({width, height, length});
   // Button
-  const button = createElement("button", "card__button", "Приобрести арт");
+  const btn = createElement("button", "card__button", "Buy art");
   const imageList = createImageList(imagesAmount, number);
 
   containerText.append(
     captionConteiner,
     cardAuthor,
     dimensionCard,
-    cardText,
-    button
+    btn
   );
   container.append(
     containerText,
     imageList
   );
-  button.addEventListener("click", function () {
+  btn.addEventListener("click", function () {
     purchaseDialogOpen(caption);
   });
   return container;
