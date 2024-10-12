@@ -7,13 +7,16 @@
   justify-content: space-between;
   flex-direction: row;
   margin-bottom: 56px;
-  padding: 32px 106px 32px 106px;
+  padding: 32px 66px;
   border-radius: 16px;
   gap: 10px;
 
-  &>div {
-    flex-grow: 1;
-    width: 50%;
+  &>div:first-child {
+    width: 510px;
+  }
+
+  &>div:last-child {
+    width: 560px;
   }
 
   &__data {
@@ -85,7 +88,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: space-between;
   background-color: var(--light-gray);
   border-radius: 8px;
   height: 560px;
@@ -106,11 +109,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 0;
     padding: 0;
     width: 46px;
-    height: 86px;
+    height: 120px;
+    border-radius: 8px;
     background-color: rgba(var(--white), 0.2);
+    @include gray-btn();
   }
 }
 
@@ -127,6 +131,7 @@
     border-radius: 8px;
 
     &>img {
+      cursor: pointer;
       width: 100%;
       height: 100%;
       object-fit: contain;

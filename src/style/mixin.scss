@@ -37,3 +37,30 @@
     cursor: default;
   }
 }
+
+@mixin gray-btn {
+  border: none;
+  cursor: pointer;
+  background-color: var(--black-200);
+
+  &:hover {
+    background-color: var(--black-300);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:active {
+    border: none;
+    color: var(--white);
+    background-color: var(--black-400);
+  }
+
+  &:disabled {
+    color: var(--gray-bd);
+    background-color: var(--black-200);
+    cursor: default;
+  }
+}
+
