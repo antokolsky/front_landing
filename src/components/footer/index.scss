@@ -32,6 +32,10 @@
         }
       }
     }
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+      gap: 5px;
+    }
   }
 
   &__copyright {
@@ -40,5 +44,9 @@
     width: 100%;
     color: var(--white);
     border-top: 1px solid var(--white);
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding: 0 16px 57px;
   }
 }

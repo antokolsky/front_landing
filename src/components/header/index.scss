@@ -7,6 +7,10 @@
   gap: 59px;
   width: 100%;
 
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+  }
+
   &__rows {
     display: flex;
     flex-direction: row;
@@ -15,12 +19,32 @@
       border-radius: 16px;
       background-color: var(--white);
       padding: 0 78px 91px 78px;
+      @media only screen and (max-width: 600px) {
+        padding: 0 16px 10px;
+      }
     }
     &:last-of-type {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       gap: 41px;
+      @media only screen and (max-width: 600px) {
+        margin-top: 516px;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 32px;
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+      gap: 20px;
+
+      div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
     }
   }
 
@@ -28,6 +52,12 @@
     @include font-params(24px, 300, 39.6px);
     text-align: left;
     padding-top: 68px;
+
+    @media only screen and (max-width: 600px) {
+      padding-top: 25px;
+      width: min-content;
+      order: 1;
+    }
 
     :first-child {
       color: var(--black);
@@ -46,7 +76,15 @@
   &__caption {
     @include font-params(54px, 600, 65.35px);
     text-align: left;
-    padding-top: 113px;
+    padding-top: 10px;
+
+    @media only screen and (max-width: 600px) {
+      padding-top: 16px;
+      display: block;
+      width: min-content;
+      order: 0;
+      @include font-params(36px, 600, 40px);
+    }
   }
 
   &__text {
@@ -56,7 +94,12 @@
     text-align: left;
     max-width: 421px;
     word-wrap: break-word;
-    padding-top: 24px
+    padding-top: 24px;
+
+    @media only screen and (max-width: 600px) {
+      padding-top: 10px;
+      order: 2;
+    }
   }
 
   &__tooltip {
@@ -66,10 +109,15 @@
     text-align: left;
     border-radius: 50px;
     height: 77px;
-    width: 548;
+    width: 548px;
     background-color: var(--white);
     margin-left: 78px;
     padding: 24px 34px 24px 34px;
+    @media only screen and (max-width: 600px) {
+      margin-left: 0;
+      width: 450px;
+      @include font-params(18px, 400, 29.05px);
+    }
   }
 
   &__button {
@@ -110,6 +158,11 @@
       &:nth-of-type(5){
         @include image-placement(297px, 346px, 326px, 367px, var(--radius), 10);
       }
+    }
+
+    @media only screen and (max-width: 600px) {
+      width: 576px;
+      margin: auto;
     }
   }
 }

@@ -119,6 +119,31 @@ dialog {
         border: none;
         @include blue-btn();
       }
+
+      @media only screen and (max-width: 600px) {
+        gap: 16px;
+
+        &>label,
+        &>button {
+          width: 100%;
+        }
+
+        &>button {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding-bottom: 16px;
+
+    &__dialog {
+      grid-gap:20px;
+    }
+    &__content,
+    &__preamble {
+      padding: 16px;
     }
   }
 }

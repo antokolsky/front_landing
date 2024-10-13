@@ -13,4 +13,8 @@
   user-select: none;
   border: 0;
   @include blue-btn();
+
+  @media only screen and (max-width: 600px) {
+    width: 560px;
+  }
 }
