@@ -11,6 +11,14 @@
   left: $left;
   top: $top;
   z-index: $z;
+
+  @media only screen and (max-width: 600px) {
+    $ratio: 1.26;
+    max-width: calc(( $width + $border + $border ) / $ratio);
+    max-height: calc(($height + $border + $border) / $ratio);
+    left: calc($left / $ratio);
+    top: calc($top / $ratio);
+  }
 }
 
 @mixin blue-btn {

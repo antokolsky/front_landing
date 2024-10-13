@@ -60,6 +60,10 @@
             outline: 2px solid var(--blue);
           }
         }
+        
+        @media only screen and (max-width: 600px) {
+          width: 100%;
+        }
       }
 
       &>button {
@@ -74,7 +78,18 @@
         background-color: var(--blue);
         border: none;
         cursor: pointer;
+
+        @media only screen and (max-width: 600px) {
+          width: 100%;
+        }
       }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    &__content,
+    &__preamble {
+      padding: 16px;
     }
   }
 }
