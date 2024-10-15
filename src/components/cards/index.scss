@@ -66,9 +66,14 @@
       }
     }
     @media only screen and (max-width: 600px) {
-      margin: 16px 40px;
+      margin: 16px;
+
+      &>h3 {
+        @include font-params(24px, 500, 30px);
+      }
 
       &>span {
+        @include font-params(24px, 500, 30px);
         padding: 0;
       }
     }
@@ -99,13 +104,26 @@
     &>div:first-child,
     &>div:last-child {
       width: 100%;
-      max-width: 510px;
+      max-width: 95%;
+      display: flex;
+      justify-content: center;
     }
 
     &__data-text {
       height: auto;
     }
+
+    &__author {
+      margin: 16px;
+    }
   }
+  @media only screen and (max-width: 375px) {
+    &>div:first-child,
+    &>div:last-child {
+      width: 100%;
+      max-width: 360px;
+    }
+  }  
 }
 
 .image {
@@ -125,6 +143,7 @@
     width: auto;
     max-width: 420px;
     height: 100%;
+    max-height: 85dvh;
     object-fit: contain;
   }
 
@@ -143,6 +162,19 @@
 
   @media only screen and (max-width: 600px) {
     height: unset;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  @media only screen and (max-width: 375px) {
+    button {
+      display: none;
+    }
+    img {
+      max-width: 360px;
+    }
   }
 }
 
@@ -198,6 +230,6 @@
 
   @media only screen and (max-width: 600px) {
     display: flex;
-    margin: 16px 40px 40px;
+    margin: 16px 16px 40px;
   }
 }
