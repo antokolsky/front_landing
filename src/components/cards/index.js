@@ -92,26 +92,26 @@ const createDimensionCard = (params) => {
   return container;
 };
 
-function changeCardImage() {
+function changeCardImage(e = null) {
   const num = this.dataset.num;
   const img = document.getElementById(`card_image_${num}`);
 
-  if (this.localName == 'img') {
+  if (this.localName == 'img' && e.type == "click") {
     // from thumbnail
     const i = this.dataset.i;
     img.src = `${rootPath}photo/${num}/${i}.jpg`;
     img.dataset.i = i;
   } else {
     const i = img.dataset.i;
-    if (this.id === 'left') {
-      // prev btn
+    if (this.id === 'left' || e.detail.dir === 'right') {
+      // prev btn or swipe to right
       if (i == 1) {
         img.dataset.i = img.dataset.amount;
       } else {
         img.dataset.i -= 1;
       }
-    } else {
-      // next btn
+    } else if (this.id === 'right' || e.detail.dir === 'left') {
+      // next btn or swipe to left
       if (i == img.dataset.amount) {
         img.dataset.i = 1;
       } else {
@@ -141,15 +141,24 @@ const createImageList = (imagesAmount, number) => {
 
 const createImageCard = (imagesAmount, number) => {
   const container = createElement("div", "image");
-  const left = createArrowButton("left", number, imagesAmount);
-  const right = createArrowButton("right", number, imagesAmount);
+  let left, right;
+  if (window.clientWidth > 576) {
+    left = createArrowButton("left", number, imagesAmount);
+    right = createArrowButton("right", number, imagesAmount);
+  }
   const img = createElement("img");
   img.src = `${rootPath}photo/${number + 1}/${1}.jpg`;
   img.id = `card_image_${number+1}`;
   img.dataset.i = 1;
+  img.dataset.num = +number + 1;
   img.dataset.amount = imagesAmount;
   img.alt = "Sculpture image";
-  container.append(left, img, right);
+  if (window.clientWidth > 599) {
+    container.append(left, img, right);
+  } else {
+    img.addEventListener("swiped", changeCardImage);
+    container.append(img);
+  }
   return container;
 };
 
