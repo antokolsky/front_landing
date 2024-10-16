@@ -142,7 +142,7 @@ const createImageList = (imagesAmount, number) => {
 const createImageCard = (imagesAmount, number) => {
   const container = createElement("div", "image");
   let left, right;
-  if (window.clientWidth > 576) {
+  if (window.screen.width > 576) {
     left = createArrowButton("left", number, imagesAmount);
     right = createArrowButton("right", number, imagesAmount);
   }
@@ -153,7 +153,7 @@ const createImageCard = (imagesAmount, number) => {
   img.dataset.num = +number + 1;
   img.dataset.amount = imagesAmount;
   img.alt = "Sculpture image";
-  if (window.clientWidth > 599) {
+  if (window.screen.width > 599) {
     container.append(left, img, right);
   } else {
     img.addEventListener("swiped", changeCardImage);
