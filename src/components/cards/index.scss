@@ -19,7 +19,7 @@
     width: 560px;
   }
 
-  
+
   &__data {
     display: flex;
     flex-direction: column;
@@ -65,6 +65,7 @@
         content: " $";
       }
     }
+
     @media only screen and (max-width: 600px) {
       margin: 16px;
 
@@ -117,13 +118,15 @@
       margin: 16px;
     }
   }
+
   @media only screen and (max-width: 375px) {
+
     &>div:first-child,
     &>div:last-child {
       width: 100%;
       max-width: 360px;
     }
-  }  
+  }
 }
 
 .image {
@@ -168,10 +171,12 @@
       height: auto;
     }
   }
+
   @media only screen and (max-width: 375px) {
     button {
       display: none;
     }
+
     img {
       max-width: 360px;
     }
@@ -205,7 +210,6 @@
 
 .dimension {
   display: grid;
-  flex-grow: 1;
   list-style-type: none;
   padding: 0;
   grid-template-rows: 1fr 1fr 1fr;
@@ -232,4 +236,102 @@
     display: flex;
     margin: 16px 16px 40px;
   }
+}
+
+
+
+
+
+
+
+
+:root {
+  --star-size: 30px;
+  --star-color: #E2E2E2;
+  --star-background: #83DECC;
+}
+
+.card__author-dimension {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.card__dimension-rating {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__rating-contaner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 28px;
+  margin-right: 34px;
+}
+
+.card__rating-text {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.card__rating {
+  display: flex;
+  --percent: calc(var(--rating) / 5 * 100%);
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+  text-align: left;
+  letter-spacing: -3px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.card__rating::before {
+  content: '★★★★★';
+  letter-spacing: -3px;
+  background:
+    linear-gradient(90deg, var(--star-background) 0%, var(--star-background) var(--percent), var(--star-color) var(--percent), var(--star-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  position: relative;
+  font-family: Times;
+}
+
+.card__container__rating-button {
+  margin-top: 6px;
+  display: flex;
+  background-color: #ffffff;
+  height: 28px;
+  width: 86px;
+  border-radius: 4px;
+  justify-content: space-between;
+  padding: 3px 9px;
+}
+
+.card__rating-top-button {
+  background-image: url("/src/icons/raiting/topRaiting.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+  border: 0;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.card__rating-bottom-button {
+  background-image: url("/src/icons/raiting/bottomRating.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+  border: 0;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+
 }

@@ -2,6 +2,7 @@ import { cards } from "../../data";
 import { purchaseDialogOpen } from "../purchase-form";
 
 
+
 const rootPath = process.env.NODE_ENV === 'development' ? "./front_landing/" : "./";
 const svgArrow = `<svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <line x1="0.707107" y1="19.2929" x2="20.7071" y2="39.2929" stroke="currentColor" stroke-width="2"/>
@@ -43,12 +44,14 @@ const createCard = (card, number) => {
 };
 
 const createCardData = (
-  { id, author, caption, height, width, length, price, imagesAmount },
+  { id, author, caption, height, width, length, price, imagesAmount,rating },
   number
 ) => {
   // Container
   const container = createElement("div", "card__data");
   const containerText = createElement("div", "card__data-text");
+  const containerAuthorDimension=createElement("div","card__author-dimension")
+  const containerDimension = createElement("div", "card__dimension-rating");
   // Caption
   const captionConteiner = createElement("div", "card__caption");
   const cardCaption = createElement("h3", "", caption);
@@ -58,15 +61,22 @@ const createCardData = (
   const cardAuthor = createElement("span", "card__author", author);
   // Dimension
   const dimensionCard = createDimensionCard({width, height, length});
+  //rating
+  const ratingCard =createRatingCard(rating)
   // Button
   const btn = createElement("button", "card__button", "Buy art");
   // Thumbnails
   const imageList = createImageList(imagesAmount, number);
 
+  containerAuthorDimension.append(cardAuthor,dimensionCard)
+
+  containerDimension.append(containerAuthorDimension,ratingCard)
+
+
+
   containerText.append(
     captionConteiner,
-    cardAuthor,
-    dimensionCard,
+    containerDimension,
     btn
   );
   container.append(
@@ -78,6 +88,25 @@ const createCardData = (
   });
   return container;
 };
+ 
+
+const createRatingCard=(num)=>{
+  const container = createElement("div", "card__rating-contaner");
+  const cardRating=createElement("div","card__rating")
+  const cardRatingText=createElement("span","card__rating-text",`${num}`)
+
+  const containerButton = createElement("div","card__container__rating-button")
+
+  //y
+  const topButton=createElement("button","card__rating-top-button")
+  const bottomButton=createElement("button","card__rating-bottom-button")
+
+  containerButton.append(topButton,bottomButton)
+  cardRating.style=`--rating: ${Math.floor(num*10)/10};`
+  container.append(cardRatingText,cardRating,containerButton)
+
+  return container
+}
 
 const createDimensionCard = (params) => {
   const container = createElement("ul", "dimension");
