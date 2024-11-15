@@ -23,6 +23,7 @@
   &__data {
     display: flex;
     flex-direction: column;
+
   }
 
   &__data-text {
@@ -31,6 +32,10 @@
     flex-direction: column;
     background-color: var(--light-gray);
     border-radius: 8px;
+
+    @media only screen and (max-width: 600px) {
+      background-color: var(--white);
+    }
   }
 
   &__button {
@@ -42,6 +47,11 @@
     padding: 16px 0 16px 0;
     border-radius: 8px;
     @include blue-btn();
+
+    @media only screen and (max-width: 600px) {
+      margin: 0 15px;
+      width: unset;
+    }
   }
 
   &__caption {
@@ -68,6 +78,7 @@
 
     @media only screen and (max-width: 600px) {
       margin: 16px;
+      margin-top: 23px;
 
       &>h3 {
         @include font-params(24px, 500, 30px);
@@ -99,8 +110,9 @@
 
   @media only screen and (max-width: 600px) {
     flex-wrap: wrap;
-    padding: 8px;
+    padding: 16px 0px 20px;
     justify-content: center;
+    border-radius: 8px;
 
     &>div:first-child,
     &>div:last-child {
@@ -137,9 +149,26 @@
   background-color: var(--light-gray);
   border-radius: 8px;
   height: 560px;
+  position: relative;
+
+  @media only screen and (max-width: 600px) {
+    order: -1;
+  }
 
   &__right {
     rotate: 180deg;
+
+    @media only screen and (max-width: 600px) {
+      right: 0;
+    }
+  }
+
+  &__left {
+
+    @media only screen and (max-width: 600px) {
+      left: 0;
+    }
+
   }
 
   img {
@@ -161,6 +190,13 @@
     border-radius: 8px;
     background-color: rgba(var(--white), 0.2);
     @include gray-btn();
+
+    @media only screen and (max-width: 600px) {
+      position: absolute;
+      height: 100%;
+      width: 40%;
+      opacity: 0;
+    }
   }
 
   @media only screen and (max-width: 600px) {
@@ -189,6 +225,7 @@
   gap: 10px;
   margin-top: 20px;
 
+
   &>div {
     width: 86px;
     height: 86px;
@@ -204,7 +241,9 @@
   }
 
   @media only screen and (max-width: 600px) {
-    margin-top: 50px;
+    margin-top: 0px;
+    order: -1;
+    background-color: #F5F5F5;
   }
 }
 
@@ -233,7 +272,6 @@
   }
 
   @media only screen and (max-width: 600px) {
-    display: flex;
     margin: 16px 16px 40px;
   }
 }
@@ -245,11 +283,7 @@
 
 
 
-:root {
-  --star-size: 30px;
-  --star-color: #E2E2E2;
-  --star-background: #83DECC;
-}
+
 
 .card__author-dimension {
   display: flex;
@@ -264,10 +298,21 @@
 
 .card__rating-contaner {
   display: flex;
-  flex-direction: column;
   align-items: center;
   margin-top: 28px;
   margin-right: 34px;
+  background-color: #ffffff;
+  height: 32px;
+  width: 150px;
+  gap: 13px;
+
+  padding: 0 8px;
+
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+    margin-top: 12px;
+    width: unset;
+  }
 }
 
 .card__rating-text {
@@ -276,39 +321,17 @@
   line-height: 28px;
 }
 
-.card__rating {
-  display: flex;
-  --percent: calc(var(--rating) / 5 * 100%);
-  font-size: var(--star-size);
-  font-family: Times;
-  line-height: 1;
-  text-align: left;
-  letter-spacing: -3px;
-  padding-left: 0px;
-  padding-right: 0px;
-}
 
-.card__rating::before {
-  content: '★★★★★';
-  letter-spacing: -3px;
-  background:
-    linear-gradient(90deg, var(--star-background) 0%, var(--star-background) var(--percent), var(--star-color) var(--percent), var(--star-color) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: block;
-  position: relative;
-  font-family: Times;
-}
+
+
 
 .card__container__rating-button {
-  margin-top: 6px;
   display: flex;
-  background-color: #ffffff;
-  height: 28px;
-  width: 86px;
+  height: 24px;
+  width: 60px;
   border-radius: 4px;
   justify-content: space-between;
-  padding: 3px 9px;
+  align-items: center;
 }
 
 .card__rating-top-button {

@@ -92,18 +92,19 @@ const createCardData = (
 
 const createRatingCard=(num)=>{
   const container = createElement("div", "card__rating-contaner");
-  const cardRating=createElement("div","card__rating")
   const cardRatingText=createElement("span","card__rating-text",`${num}`)
+  
+  ///изменяю цвет текста рейтинга
+  cardRatingText.style.color=num>0  ?"#83DECC":"#DB5959"
+
 
   const containerButton = createElement("div","card__container__rating-button")
 
-  //y
   const topButton=createElement("button","card__rating-top-button")
   const bottomButton=createElement("button","card__rating-bottom-button")
 
   containerButton.append(topButton,bottomButton)
-  cardRating.style=`--rating: ${Math.floor(num*10)/10};`
-  container.append(cardRatingText,cardRating,containerButton)
+  container.append(cardRatingText,containerButton)
 
   return container
 }
