@@ -79,17 +79,17 @@
           <form class="subscribe__form">
             <label>
               *Enter your email address
-              <input type="text" name="email" placeholder="your@email.com" />
+              <input required type="text" name="email" placeholder="your@email.com" />
             </label>
             <label>
               *Enter your country
-              <select id="country" name="country" placeholder="Start typing to choose one..." autocomplete="off">
+              <select required id="country" name="country" placeholder="Start typing to choose one..." autocomplete="off">
                 <option value="">Start typing to choose one...</option>
               </select>
             </label>
             <label>
               Your occupation
-              <select id="occupation" placeholder="Choose or add one..." autocomplete="off">
+              <select id="occupation" placeholder="Choose or add one..." autocomplete="off" name="occupation">
                 <option value="">Choose or add one...</option>
               </select>
             </label>
@@ -99,7 +99,7 @@
             </label>
             <label>
               Organization website
-              <input type="text" name="email" placeholder="www.yoursite.com" />
+              <input type="text" name="website_organization" placeholder="www.yoursite.com" />
             </label>
             <button type="submit">
               Send

@@ -15,6 +15,7 @@ const cardsPerBatch = 8;
 let cardPosition = 0;
 
 const addCards = () => {
+
   for (let i=0; i<cardsPerBatch; i++) {
     container.append(createCard(cards[cardPosition], cardPosition));
     cardPosition++;
@@ -27,6 +28,8 @@ const addCards = () => {
 };
 
 export const cardLoader = (containerElementId, buttonElementId) => {
+
+
   container = document.querySelector(containerElementId);
   loadButton = document.querySelector(buttonElementId);
   loadButton.addEventListener("click", addCards);

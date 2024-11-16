@@ -6,6 +6,7 @@ import { cardLoader } from "./components/cards";
 import { STLViewerEnable } from "./components/threed";
 import { subscribeFormInit } from "./components/subscribe";
 import { purchaseDialogInit } from "./components/purchase-form";
+import { subscribeForm } from "./components/subscribe-form/subscribe-form";
 
 swipedEvents(window, document);
 
@@ -18,3 +19,5 @@ STLViewerEnable("stlviewer");
 subscribeFormInit();
 
 purchaseDialogInit();
+
+subscribeForm()
