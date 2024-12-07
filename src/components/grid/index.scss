@@ -1,6 +1,12 @@
 .container {
   max-width: 1252px;
   width: 100%;
+  @media only screen and (max-width: 600px) {
+    max-width: 600px;
+  }
+  @media only screen and (max-width: 375px) {
+    max-width: 375px;
+  }
 }
 
 .footer {

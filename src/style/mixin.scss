@@ -11,4 +11,63 @@
   left: $left;
   top: $top;
   z-index: $z;
+
+  @media only screen and (max-width: 600px) {
+    max-width: calc(($width + $border + $border) / var(--image-ratio));
+    max-height: calc(($height + $border + $border) / var(--image-ratio));
+    left: calc($left / var(--image-ratio));
+    top: calc($top / var(--image-ratio));
+  }
 }
+
+@mixin blue-btn {
+  border: none;
+  cursor: pointer;
+  background-color: var(--blue);
+
+  &:hover {
+    background-color: var(--blueish);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:active {
+    border: none;
+    background-color: var(--bright-blue);
+  }
+
+  &:disabled {
+    color: rgb(0 0 0 / 40%);
+    background-color: var(--lite-blue);
+    cursor: default;
+  }
+}
+
+@mixin gray-btn {
+  border: none;
+  cursor: pointer;
+  background-color: var(--black-200);
+
+  &:hover {
+    background-color: var(--black-300);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:active {
+    border: none;
+    color: var(--white);
+    background-color: var(--black-400);
+  }
+
+  &:disabled {
+    color: var(--gray-bd);
+    background-color: var(--black-200);
+    cursor: default;
+  }
+}
+

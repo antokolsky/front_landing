@@ -7,6 +7,10 @@
   gap: 59px;
   width: 100%;
 
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+  }
+
   &__rows {
     display: flex;
     flex-direction: row;
@@ -15,30 +19,67 @@
       border-radius: 16px;
       background-color: var(--white);
       padding: 0 78px 91px 78px;
+      @media only screen and (max-width: 600px) {
+        padding: 0 16px 10px;
+      }
     }
     &:last-of-type {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       gap: 41px;
+      margin-top: 100px;
+      @media only screen and (max-width: 600px) {
+        margin-top: calc(640px / var(--image-ratio));
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 32px;
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+      gap: 20px;
     }
   }
 
   &__logo {
-    @include font-params(24px, 200, 29.05px);
+    @include font-params(24px, 300, 39.6px);
     text-align: left;
     padding-top: 68px;
 
-    span {
+    @media only screen and (max-width: 600px) {
+      padding-top: 25px;
+      width: min-content;
+    }
+
+    :first-child {
+      color: var(--black);
+      background: var(--blue);
+      padding: 6px 0 6px 6px;
+      border-radius: 6px 0 0 6px;
+    }
+    :last-child {
       color: var(--blue);
-      font-weight: 400;
+      background: var(--black);
+      padding: 6px 6px 6px 0;
+      border-radius: 0 6px 6px 0;
     }
   }
 
   &__caption {
     @include font-params(54px, 600, 65.35px);
     text-align: left;
-    padding-top: 113px;
+    padding-top: 10px;
+
+    @media only screen and (max-width: 600px) {
+      padding-top: 16px;
+      width: min-content;
+      @include font-params(36px, 600, 40px);
+    }
+    @media only screen and (max-width: 375px) {
+      @include font-params(28px, 500, 32px);
+    }
   }
 
   &__text {
@@ -48,7 +89,11 @@
     text-align: left;
     max-width: 421px;
     word-wrap: break-word;
-    padding-top: 24px
+    padding-top: 24px;
+
+    @media only screen and (max-width: 600px) {
+      padding-top: 10px;
+    }
   }
 
   &__tooltip {
@@ -58,10 +103,15 @@
     text-align: left;
     border-radius: 50px;
     height: 77px;
-    width: 548;
+    width: 570px;
     background-color: var(--white);
     margin-left: 78px;
     padding: 24px 34px 24px 34px;
+    @media only screen and (max-width: 600px) {
+      margin-left: 0;
+      width: 75%;
+      @include font-params(18px, 400, 29.05px);
+    }
   }
 
   &__button {
@@ -69,10 +119,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--blue);
     width: var(--button-size);
     height: var(--button-size);
     border-radius: calc(var(--button-size) / 2);
+    @include blue-btn();
   }
 
   &__images {
@@ -102,6 +152,12 @@
       &:nth-of-type(5){
         @include image-placement(297px, 346px, 326px, 367px, var(--radius), 10);
       }
+    }
+
+    @media only screen and (max-width: 600px) {
+      max-width: 576px;
+      width: 100%;
+      margin: auto;
     }
   }
 }
