@@ -347,7 +347,7 @@
 }
 
 .card__rating-bottom-button {
-  background-image: url("/src/icons/raiting/bottomRating.svg");
+  background-image: url("/src/icons/raiting/bottomRating.svg") ;
   background-repeat: no-repeat;
   background-size: contain;
   background-color: white;
@@ -356,5 +356,5 @@
   width: 22px;
   height: 22px;
   cursor: pointer;
-
+ 
 }

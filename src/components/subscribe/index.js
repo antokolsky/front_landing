@@ -14,7 +14,6 @@ const tomselect = (id, isAddAllowed, options) => {
 
 export const subscribeFormInit = async () => {
   
-  fetch("http://antokolsky.ddns.net/api/landing/projects/")
   
 
   const country = await fetch("http://antokolsky.ddns.net/api/russian/countries/").then(ref=>ref.json())
