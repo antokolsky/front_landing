@@ -332,13 +332,17 @@
   border-radius: 4px;
   justify-content: space-between;
   align-items: center;
+  margin-left: auto;
 }
 
 .card__rating-top-button {
-  background-image: url("/src/icons/raiting/topRaiting.svg");
+
+  mask: url("/src/icons/raiting/topRaiting.svg") ;
+
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: white;
+  background-color: rgb(0, 128, 0);
+
   border: 0;
   padding: 0;
   width: 22px;
@@ -347,14 +351,14 @@
 }
 
 .card__rating-bottom-button {
-  background-image: url("/src/icons/raiting/bottomRating.svg") ;
+  mask: url("/src/icons/raiting/bottomRating.svg") ;
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: white;
+  background-color: rgb(241, 34, 34);
+
   border: 0;
   padding: 0;
   width: 22px;
   height: 22px;
   cursor: pointer;
- 
 }
