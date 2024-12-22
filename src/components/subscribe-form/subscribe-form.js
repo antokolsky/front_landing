@@ -19,7 +19,7 @@ export const subscribeForm = () => {
         email: email.value,
         country: country.value,
         organization: organization.value,
-        organization_website: website_organization.value??"http://antokolsky.ddns.net",
+        organization_website: website_organization.value,
         activity_type: occupation.value,
       })
         .then((v) => {
@@ -27,6 +27,7 @@ export const subscribeForm = () => {
           return v.json();
         })
         .then((v) => {
+          
             localStorage.setItem("respondents","true")
             alert("successfully")
         })
