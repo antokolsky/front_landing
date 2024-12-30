@@ -39,7 +39,6 @@ jobs:
                 passphrase: ${{ secrets.SSH_PHRASE }}
                 source: "docker-compose.yaml"
                 target: "antokolsky"
-                debug: true
             - name: ssh to remote server
               uses: appleboy/ssh-action@master
               with:
