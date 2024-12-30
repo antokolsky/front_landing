@@ -348,6 +348,13 @@
   width: 22px;
   height: 22px;
   cursor: pointer;
+  &.updated{
+  background-color: rgba(0, 128, 0, 0.233);
+
+  }
+  &:hover{
+    background-color: rgba(0, 128, 0, 0.384);
+  }
 }
 
 .card__rating-bottom-button {
@@ -361,4 +368,13 @@
   width: 22px;
   height: 22px;
   cursor: pointer;
+  &.updated{
+    background-color: rgb(241, 34, 34, 0.233);
+
+  }
+  &:hover{
+    
+  background-color: rgb(241, 34, 34, 0.384);
+
+  }
 }

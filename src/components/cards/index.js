@@ -2,11 +2,9 @@ import { vote } from "../../api/vote";
 import { cards } from "../../data";
 import { purchaseDialogOpen } from "../purchase-form";
 
-console.log(cards);
 
 
 const rootPath = process.env.NODE_ENV === 'development' ? "http://antokolsy-landing.ddns.net/photo" : "./photo";
-console.log(process.env.NODE_ENV);
 
 const svgArrow = `<svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <line x1="0.707107" y1="19.2929" x2="20.7071" y2="39.2929" stroke="currentColor" stroke-width="2"/>
@@ -35,8 +33,8 @@ export const cardLoader = async (containerElementId, buttonElementId) => {
 
  const data= await (await fetch("http://antokolsky.ddns.net/api/landing/projects/")).json()
 
- const cards= data.map((v,i)=>({
-  id:i,
+ const cards= data.map((v)=>({
+  id:v.id,
   author:v.author_name,
   caption:v.title,
   height:v.dimension_height,
@@ -125,8 +123,52 @@ const createRatingCard=(num,id)=>{
   const topButton=createElement("button","card__rating-top-button")
   const bottomButton=createElement("button","card__rating-bottom-button")
 
-  topButton.addEventListener("click",()=>{vote(id,"top")})
-  bottomButton.addEventListener("click",()=>{vote(id,"bottom")})
+  if(localStorage.getItem(`project:${id} up`)==="updated") {
+    topButton.classList.add("updated")
+
+  }
+  if(localStorage.getItem(`project:${id} bottom`)==="updated") {
+    bottomButton.classList.add("updated")
+
+  }
+
+  topButton.addEventListener("click",()=>{
+    if(localStorage.getItem(`project:${id} up`)==="updated") return
+
+
+    vote(id,"top").then(v=>{
+      if(v.status===200)    return v.json()
+        throw Error(v)
+   }).then(v=>{
+    
+    localStorage.setItem(`project:${id} up`,"updated")
+    localStorage.setItem(`project:${id} bottom`,"")
+
+
+    topButton.classList.add("updated")
+    bottomButton.classList.remove("updated")
+    
+    alert("Изменено")})
+    .catch(err=>console.log(err))
+      
+  })
+  bottomButton.addEventListener("click",()=>{
+    if(localStorage.getItem(`project:${id} bottom`)==="updated") return
+
+    vote(id,"bottom").then(v=>{
+      if(v.status===200)    return v.json()
+        throw Error(v)
+   }).then(v=>{
+
+    localStorage.setItem(`project:${id} bottom`,"updated")
+    localStorage.setItem(`project:${id} up`,"")
+
+    bottomButton.classList.add("updated")
+    topButton.classList.remove("updated")
+
+    alert("Изменено")})
+    .catch(err=>console.log(err))
+  })
 
   containerButton.append(topButton,bottomButton)
   container.append(cardRatingText,containerButton)
