@@ -50,6 +50,6 @@ jobs:
                 script: |
                   cd ~/antokolsky
                   sudo docker compose stop
-                  sudo docker compose pull ${{ env.LANDING_IMAGE }}
+                  sudo docker pull ${{ env.LANDING_IMAGE }}
                   sudo docker compose up -d
                   sudo docker image prune -f
