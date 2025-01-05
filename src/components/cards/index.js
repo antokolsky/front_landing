@@ -4,7 +4,7 @@ import { purchaseDialogOpen } from "../purchase-form";
 
 
 
-const rootPath = process.env.NODE_ENV === 'development' ? "http://antokolsy-landing.ddns.net/photo" : "./photo";
+const rootPath = process.env.NODE_ENV === 'development' ? "https://antokolsy-landing.ddns.net/photo" : "./photo";
 
 const svgArrow = `<svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <line x1="0.707107" y1="19.2929" x2="20.7071" y2="39.2929" stroke="currentColor" stroke-width="2"/>
@@ -31,7 +31,7 @@ const addCards = (cards) => {
 
 export const cardLoader = async (containerElementId, buttonElementId) => {
 
- const data= await (await fetch("http://antokolsky.ddns.net/api/landing/projects/")).json()
+ const data= await (await fetch("https://antokolsky.ddns.net/api/landing/projects/")).json()
 
  const cards= data.map((v)=>({
   id:v.id,
