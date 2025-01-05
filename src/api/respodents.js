@@ -5,7 +5,7 @@ export const respondents = ({
   country,
   activity_type,
 }) =>
-  fetch("http://antokolsky.ddns.net/api/landing/respondents/", {
+  fetch("https://antokolsky.ddns.net/api/landing/respondents/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
