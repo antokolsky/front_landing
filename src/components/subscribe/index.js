@@ -16,10 +16,10 @@ export const subscribeFormInit = async () => {
   
   
 
-  const country = await fetch("http://antokolsky.ddns.net/api/russian/countries/").then(ref=>ref.json())
+  const country = await fetch("https://antokolsky.ddns.net/api/russian/countries/").then(ref=>ref.json())
   tomselect("#country", false, country.map(v=>({value:v.id,text:v.name_en})));
   
   
-  const occupation = await fetch("http://antokolsky.ddns.net/api/landing/activity_types/").then(ref=>ref.json())
+  const occupation = await fetch("https://antokolsky.ddns.net/api/landing/activity_types/").then(ref=>ref.json())
    tomselect("#occupation", true, occupation.map(v=>({value:v.id,text:v.name})));
 };
