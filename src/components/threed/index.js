@@ -121,7 +121,7 @@ const STLViewer = async (elem, model) => {
 }
 
 export const STLViewerEnable = (classname) => {
-    const rootPath = process.env.NODE_ENV === 'development' ? "./front_landing/" : "./";
+    const rootPath = process.env.NODE_ENV === 'development' ? "./" : "./";
     const models = document.getElementsByClassName(classname);
     for (let m of models) {
       STLViewer(m, `${rootPath}${m.getAttribute("data-src")}`);

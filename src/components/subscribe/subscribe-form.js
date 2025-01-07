@@ -22,17 +22,15 @@ export const subscribeForm = () => {
         organization_website: website_organization.value,
         activity_type: occupation.value,
       })
-        .then((v) => {
-          if (v.ok === false) throw v.json();
-          return v.json();
+        .then((res) => {
+          if (res.ok === false) throw res.json();
+          return res.json();
         })
-        .then((v) => {
+        .then((respondents) => {
           
-            localStorage.setItem("respondents","true")
-            alert("successfully")
         })
-        .catch((v) => {
-          v.then((v) => alert(JSON.stringify(v)));
+        .catch((error) => {
+          
         });
     });
 };
