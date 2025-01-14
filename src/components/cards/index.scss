@@ -1,4 +1,4 @@
-@import '../../style/mixin.scss';
+@import "../../style/mixin.scss";
 
 .card {
   width: 100%;
@@ -11,19 +11,17 @@
   border-radius: 16px;
   gap: 10px;
 
-  &>div:first-child {
+  & > div:first-child {
     width: 510px;
   }
 
-  &>div:last-child {
+  & > div:last-child {
     width: 560px;
   }
-
 
   &__data {
     display: flex;
     flex-direction: column;
-
   }
 
   &__data-text {
@@ -61,13 +59,13 @@
     margin: 40px 40px 16px 40px;
     align-items: center;
 
-    &>h3 {
+    & > h3 {
       @include font-params(28px, 500, 33.89px);
       max-width: 251px;
       word-wrap: break-word;
     }
 
-    &>span {
+    & > span {
       @include font-params(30px, 500, 36.31px);
       padding: 16px 40px 16px 0px;
 
@@ -80,11 +78,11 @@
       margin: 16px;
       margin-top: 23px;
 
-      &>h3 {
+      & > h3 {
         @include font-params(24px, 500, 30px);
       }
 
-      &>span {
+      & > span {
         @include font-params(24px, 500, 30px);
         padding: 0;
       }
@@ -114,8 +112,8 @@
     justify-content: center;
     border-radius: 8px;
 
-    &>div:first-child,
-    &>div:last-child {
+    & > div:first-child,
+    & > div:last-child {
       width: 100%;
       max-width: 95%;
       display: flex;
@@ -132,9 +130,8 @@
   }
 
   @media only screen and (max-width: 375px) {
-
-    &>div:first-child,
-    &>div:last-child {
+    & > div:first-child,
+    & > div:last-child {
       width: 100%;
       max-width: 360px;
     }
@@ -164,11 +161,9 @@
   }
 
   &__left {
-
     @media only screen and (max-width: 600px) {
       left: 0;
     }
-
   }
 
   img {
@@ -225,14 +220,13 @@
   gap: 10px;
   margin-top: 20px;
 
-
-  &>div {
+  & > div {
     width: 86px;
     height: 86px;
     background-color: var(--light-gray);
     border-radius: 8px;
 
-    &>img {
+    & > img {
       cursor: pointer;
       width: 100%;
       height: 100%;
@@ -243,7 +237,7 @@
   @media only screen and (max-width: 600px) {
     margin-top: 0px;
     order: -1;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
   }
 }
 
@@ -256,7 +250,7 @@
   grid-auto-flow: column;
   column-gap: 24px;
   @include font-params(20px, 500, 24.2px);
-  margin: 24px 40px 95px 40px;
+  margin: 24px 40px 95px 0;
   width: auto;
 
   &__name {
@@ -272,28 +266,19 @@
   }
 
   @media only screen and (max-width: 600px) {
-    margin: 16px 16px 40px;
+    margin: 16px 8px 40px;
   }
 }
-
-
-
-
-
-
-
-
-
 
 .card__author-dimension {
   display: flex;
   flex-direction: column;
 }
 
-
 .card__dimension-rating {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  flex: 1;
 }
 
 .card__rating-contaner {
@@ -321,10 +306,6 @@
   line-height: 28px;
 }
 
-
-
-
-
 .card__container__rating-button {
   display: flex;
   height: 24px;
@@ -336,8 +317,7 @@
 }
 
 .card__rating-top-button {
-
-  mask: url("/src/icons/raiting/topRaiting.svg") ;
+  mask: url("/src/icons/raiting/topRaiting.svg");
 
   background-repeat: no-repeat;
   background-size: contain;
@@ -348,33 +328,29 @@
   width: 22px;
   height: 22px;
   cursor: pointer;
-  &.updated{
-  background-color: rgba(0, 128, 0, 0.233);
-
+  &.updated {
+    background-color: rgba(0, 128, 0, 0.233);
   }
-  &:hover{
+  &:hover {
     background-color: rgba(0, 128, 0, 0.384);
   }
 }
 
 .card__rating-bottom-button {
-  mask: url("/src/icons/raiting/bottomRating.svg") ;
+  mask: url("/src/icons/raiting/bottomRating.svg");
   background-repeat: no-repeat;
   background-size: contain;
-  background: linear-gradient(to center, #dfc698, #203a43  );
+  background: linear-gradient(to center, #dfc698, #203a43);
 
   border: 0;
   padding: 0;
   width: 22px;
   height: 22px;
   cursor: pointer;
-  &.updated{
+  &.updated {
     background-color: rgb(241, 34, 34, 0.233);
-
   }
-  &:hover{
-    
-  background-color: rgb(241, 34, 34, 0.384);
-
+  &:hover {
+    background-color: rgb(241, 34, 34, 0.384);
   }
 }
