@@ -1,9 +1,8 @@
 import { vote } from "../../api/vote";
 import { purchaseDialogOpen } from "../purchase-form";
 
-
-
-const rootPath = process.env.NODE_ENV === 'development' ? import.meta.env.VITE_IMG : "./photo";
+const rootPath =
+  process.env.NODE_ENV === "development" ? import.meta.env.VITE_IMG : "./photo";
 
 const svgArrow = `<svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <line x1="0.707107" y1="19.2929" x2="20.7071" y2="39.2929" stroke="currentColor" stroke-width="2"/>
@@ -16,8 +15,7 @@ const cardsPerBatch = 8;
 let cardPosition = 0;
 
 const addCards = (cards) => {
-
-  for (let i=0; i<cardsPerBatch; i++) {
+  for (let i = 0; i < cardsPerBatch; i++) {
     container.append(createCard(cards[cardPosition], cardPosition));
     cardPosition++;
     if (cardPosition == cards.length) {
@@ -29,33 +27,36 @@ const addCards = (cards) => {
 };
 
 export const cardLoader = async (containerElementId, buttonElementId) => {
+  const data = await (
+    await fetch(`${import.meta.env.VITE_API}/landing/projects/`)
+  ).json();
 
- const data= await (await fetch(`${import.meta.env.VITE_API}/landing/projects/`)).json()
-
- const cards= data.map((v)=>({
-  id:v.id,
-  author:v.author_name,
-  caption:v.title,
-  height:v.dimension_height,
-  width:v.dimension_width,
-  length:v.dimension_depth,
-  price:v.cost,
-  imagesAmount:v.images.length,
-  rating:v.rating,
-  images:v.images
-}))
+  const cards = data.map((v) => ({
+    id: v.id,
+    author: v.author_name,
+    caption: v.title,
+    height: v.dimension_height,
+    width: v.dimension_width,
+    length: v.dimension_depth,
+    price: v.cost,
+    imagesAmount: v.images.length,
+    rating: v.rating,
+    images: v.images,
+  }));
 
   container = document.querySelector(containerElementId);
   loadButton = document.querySelector(buttonElementId);
-  loadButton.addEventListener("click", ()=>{addCards(cards)});
+  loadButton.addEventListener("click", () => {
+    addCards(cards);
+  });
 
-  addCards(cards)
+  addCards(cards);
 };
 
 const createCard = (card, number) => {
   const cardElement = createElement("section", "card");
 
-  const cardImage = createImageCard(card.imagesAmount, number,card.images);
+  const cardImage = createImageCard(card.imagesAmount, number, card.images);
   const cardData = createCardData(card, number);
 
   cardElement.append(cardData, cardImage);
@@ -63,13 +64,27 @@ const createCard = (card, number) => {
 };
 
 const createCardData = (
-  { id, author, caption, height, width, length, price, imagesAmount,rating,images },
+  {
+    id,
+    author,
+    caption,
+    height,
+    width,
+    length,
+    price,
+    imagesAmount,
+    rating,
+    images,
+  },
   number
 ) => {
   // Container
   const container = createElement("div", "card__data");
   const containerText = createElement("div", "card__data-text");
-  const containerAuthorDimension=createElement("div","card__author-dimension")
+  const containerAuthorDimension = createElement(
+    "div",
+    "card__author-dimension"
+  );
   const containerDimension = createElement("div", "card__dimension-rating");
   // Caption
   const captionConteiner = createElement("div", "card__caption");
@@ -79,101 +94,93 @@ const createCardData = (
   // Author
   const cardAuthor = createElement("span", "card__author", author);
   // Dimension
-  const dimensionCard = createDimensionCard({width, height, length});
+  const dimensionCard = createDimensionCard({ width, height, length });
   //rating
-  const ratingCard =createRatingCard(rating,id)
+  const ratingCard = createRatingCard(rating, id);
   // Button
   const btn = createElement("button", "card__button", "Buy art");
   // Thumbnails
-  const imageList = createImageList(imagesAmount, number,images);
+  const imageList = createImageList(imagesAmount, number, images);
+  console.log(ratingCard);
 
-  containerAuthorDimension.append(cardAuthor,dimensionCard)
+  containerAuthorDimension.append(ratingCard, dimensionCard);
 
-  containerDimension.append(containerAuthorDimension,ratingCard)
+  containerDimension.append(containerAuthorDimension);
 
-
-
-  containerText.append(
-    captionConteiner,
-    containerDimension,
-    btn
-  );
-  container.append(
-    containerText,
-    imageList
-  );
+  containerText.append(captionConteiner, containerDimension, btn);
+  container.append(containerText, imageList);
   btn.addEventListener("click", function () {
     purchaseDialogOpen(caption);
   });
   return container;
 };
- 
 
-const createRatingCard=(num,id)=>{
+const createRatingCard = (num, id) => {
   const container = createElement("div", "card__rating-contaner");
-  const cardRatingText=createElement("span","card__rating-text",`${num}`)
-  
+  const cardRatingText = createElement("span", "card__rating-text", `${num}`);
+
   ///изменяю цвет текста рейтинга
-  cardRatingText.style.color=num>0  ?"#83DECC":"#DB5959"
+  cardRatingText.style.color = num > 0 ? "#83DECC" : "#DB5959";
 
+  const containerButton = createElement(
+    "div",
+    "card__container__rating-button"
+  );
 
-  const containerButton = createElement("div","card__container__rating-button")
+  const topButton = createElement("button", "card__rating-top-button");
+  const bottomButton = createElement("button", "card__rating-bottom-button");
 
-  const topButton=createElement("button","card__rating-top-button")
-  const bottomButton=createElement("button","card__rating-bottom-button")
-
-  if(localStorage.getItem(`project:${id} up`)==="updated") {
-    topButton.classList.add("updated")
-
+  if (localStorage.getItem(`project:${id} up`) === "updated") {
+    topButton.classList.add("updated");
   }
-  if(localStorage.getItem(`project:${id} bottom`)==="updated") {
-    bottomButton.classList.add("updated")
-
+  if (localStorage.getItem(`project:${id} bottom`) === "updated") {
+    bottomButton.classList.add("updated");
   }
 
-  topButton.addEventListener("click",()=>{
-    if(localStorage.getItem(`project:${id} up`)==="updated") return
+  topButton.addEventListener("click", () => {
+    if (localStorage.getItem(`project:${id} up`) === "updated") return;
 
+    vote(id, "top")
+      .then((v) => {
+        if (v.status === 200) return v.json();
+        throw Error(v);
+      })
+      .then((v) => {
+        localStorage.setItem(`project:${id} up`, "updated");
+        localStorage.setItem(`project:${id} bottom`, "");
 
-    vote(id,"top").then(v=>{
-      if(v.status===200)    return v.json()
-        throw Error(v)
-   }).then(v=>{
-    
-    localStorage.setItem(`project:${id} up`,"updated")
-    localStorage.setItem(`project:${id} bottom`,"")
+        topButton.classList.add("updated");
+        bottomButton.classList.remove("updated");
 
+        alert("Изменено");
+      })
+      .catch((err) => console.log(err));
+  });
+  bottomButton.addEventListener("click", () => {
+    if (localStorage.getItem(`project:${id} bottom`) === "updated") return;
 
-    topButton.classList.add("updated")
-    bottomButton.classList.remove("updated")
-    
-    alert("Изменено")})
-    .catch(err=>console.log(err))
-      
-  })
-  bottomButton.addEventListener("click",()=>{
-    if(localStorage.getItem(`project:${id} bottom`)==="updated") return
+    vote(id, "bottom")
+      .then((v) => {
+        if (v.status === 200) return v.json();
+        throw Error(v);
+      })
+      .then((v) => {
+        localStorage.setItem(`project:${id} bottom`, "updated");
+        localStorage.setItem(`project:${id} up`, "");
 
-    vote(id,"bottom").then(v=>{
-      if(v.status===200)    return v.json()
-        throw Error(v)
-   }).then(v=>{
+        bottomButton.classList.add("updated");
+        topButton.classList.remove("updated");
 
-    localStorage.setItem(`project:${id} bottom`,"updated")
-    localStorage.setItem(`project:${id} up`,"")
+        alert("Изменено");
+      })
+      .catch((err) => console.log(err));
+  });
 
-    bottomButton.classList.add("updated")
-    topButton.classList.remove("updated")
+  containerButton.append(topButton, bottomButton);
+  container.append(cardRatingText, containerButton);
 
-    alert("Изменено")})
-    .catch(err=>console.log(err))
-  })
-
-  containerButton.append(topButton,bottomButton)
-  container.append(cardRatingText,containerButton)
-
-  return container
-}
+  return container;
+};
 
 const createDimensionCard = (params) => {
   const container = createElement("ul", "dimension");
@@ -189,42 +196,39 @@ const createDimensionCard = (params) => {
 };
 
 function changeCardImage(images) {
-
-  return function(e = null){
+  return function (e = null) {
     const num = this.dataset.num;
-  const img = document.getElementById(`card_image_${num}`);
+    const img = document.getElementById(`card_image_${num}`);
 
-  if (this.localName == 'img' && e.type == "click") {
-    // from thumbnail
-    const i = this.dataset.i;
-    img.src = `${rootPath}/${images[i-1].image}`;
+    if (this.localName == "img" && e.type == "click") {
+      // from thumbnail
+      const i = this.dataset.i;
+      img.src = `${rootPath}/${images[i - 1].image}`;
 
-    img.dataset.i = i;
-  } else {
-    const i = img.dataset.i;
-    if (this.id === 'left' || e.detail.dir === 'right') {
-      // prev btn or swipe to right
-      if (i == 1) {
-        img.dataset.i = img.dataset.amount;
-      } else {
-        img.dataset.i -= 1;
+      img.dataset.i = i;
+    } else {
+      const i = img.dataset.i;
+      if (this.id === "left" || e.detail.dir === "right") {
+        // prev btn or swipe to right
+        if (i == 1) {
+          img.dataset.i = img.dataset.amount;
+        } else {
+          img.dataset.i -= 1;
+        }
+      } else if (this.id === "right" || e.detail.dir === "left") {
+        // next btn or swipe to left
+        if (i == img.dataset.amount) {
+          img.dataset.i = 1;
+        } else {
+          img.dataset.i = +img.dataset.i + 1;
+        }
       }
-    } else if (this.id === 'right' || e.detail.dir === 'left') {
-      // next btn or swipe to left
-      if (i == img.dataset.amount) {
-        img.dataset.i = 1;
-      } else {
-        img.dataset.i = +img.dataset.i + 1;
-      }
+      img.src = `${rootPath}/${images[img.dataset.i - 1].image}`;
     }
-    img.src = `${rootPath}/${images[img.dataset.i-1].image}`;
+  };
+}
 
-  }
-  }
-  
-};
-
-const createImageList = (imagesAmount, number,images) => {
+const createImageList = (imagesAmount, number, images) => {
   const container = createElement("div", "image-list");
   const items = Array.from({ length: imagesAmount }, (_, i) => i).map((i) => {
     const item = createElement("div");
@@ -242,17 +246,16 @@ const createImageList = (imagesAmount, number,images) => {
   return container;
 };
 
-const createImageCard = (imagesAmount, number,images) => {
-  
+const createImageCard = (imagesAmount, number, images) => {
   const container = createElement("div", "image");
   let left, right;
   if (window.screen.width > 600) {
-    left = createArrowButton("left", number, imagesAmount,images);
-    right = createArrowButton("right", number, imagesAmount,images);
+    left = createArrowButton("left", number, imagesAmount, images);
+    right = createArrowButton("right", number, imagesAmount, images);
   }
   const img = createElement("img");
   img.src = `${rootPath}/${images[0].image}`;
-  img.id = `card_image_${number+1}`;
+  img.id = `card_image_${number + 1}`;
   img.dataset.i = 1;
   img.dataset.num = +number + 1;
   img.dataset.amount = imagesAmount;
@@ -266,7 +269,7 @@ const createImageCard = (imagesAmount, number,images) => {
   return container;
 };
 
-const createArrowButton = (name, number, imagesAmount,images) => {
+const createArrowButton = (name, number, imagesAmount, images) => {
   const elem = createElement("button", `image__${name}`);
   elem.innerHTML = svgArrow;
   if (imagesAmount > 1) {
