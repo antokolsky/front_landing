@@ -31,6 +31,7 @@ export const subscribeForm = () => {
           return res.json();
         })
         .then((respondents) => {
+          localStorage.setItem("respondents", "true");
           alert("Subscription completed");
         })
         .catch((er) => {

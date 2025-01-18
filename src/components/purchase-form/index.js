@@ -48,9 +48,7 @@ const submitPurchase = () => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     clearErrors();
-    if (window.localStorage.getItem("sculpture_order")) {
-      return;
-    }
+
     const sculpture_name = event.currentTarget.sculpture_name.value;
     const email = event.currentTarget.email.value;
     const phone = event.currentTarget.phone.value;
@@ -62,7 +60,6 @@ const submitPurchase = () => {
         return ref.json();
       })
       .then((ref) => {
-        window.localStorage.setItem("sculpture_order", "true");
         alert("The order is accepted. We will get in touch with you.");
       })
       .catch((er) => {
