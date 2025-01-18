@@ -3,7 +3,21 @@
   display: grid;
   grid-gap: 32px;
   margin-top: 72px;
-  
+
+  .error {
+    display: none;
+    color: var(--red);
+    @include font-params(18px, 400, 26px);
+
+    &_active {
+      display: block;
+    }
+  }
+
+  .field-error {
+    background-color: var(--light-red);
+  }
+
   &__content,
   &__preamble {
     display: grid;
@@ -15,10 +29,10 @@
     grid-gap: 28px;
     padding: 36px;
 
-    &>p {
+    & > p {
       @include font-params(22px, 300, 28px);
 
-      &>a {
+      & > a {
         text-decoration: none;
         color: currentColor;
 
@@ -33,28 +47,27 @@
     grid-gap: 40px;
     padding: 64px 106px;
 
-    &>h3 {
+    & > h3 {
       @include font-params(28px, 500, 32px);
     }
 
-    &>form {
+    & > form {
       display: flex;
       flex-wrap: wrap;
       gap: 48px 20px;
       align-items: flex-end;
 
-      &>label {
+      & > label {
         width: calc(50% - 10px);
 
-        
         @include font-params(18px, 500, 26px);
-
 
         display: flex;
         flex-direction: column;
         row-gap: 16px;
+        align-self: flex-start;
 
-        &>input {
+        & > input {
           @include font-params(18px, 400, 26px);
           background: var(--light-blue);
           height: 58px;
@@ -66,20 +79,15 @@
           &:focus {
             outline: 2px solid var(--blue);
           }
-          
-          
         }
-        
-        
 
         @media only screen and (max-width: 600px) {
           width: 100%;
         }
       }
 
-      &>button {
+      & > label > button {
         @include font-params(20px, 400, 24px);
-        width: calc(50% - 10px);
         height: 58px;
         display: flex;
         justify-content: center;

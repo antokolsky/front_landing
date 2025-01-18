@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
@@ -131,10 +131,11 @@
             <h3>
               Subscribe to the monthly newsletter of new works by our sculptors
             </h3>
-            <form class="subscribe__form">
+            <form class="subscribe__form" novalidate>
               <label>
                 *Enter your email address
                 <input type="text" name="email" placeholder="your@email.com" />
+                <span class="error"></span>
               </label>
               <label>
                 *Enter your country
@@ -146,31 +147,38 @@
                 >
                   <option value="">Start typing to choose one...</option>
                 </select>
+                <span class="error"></span>
               </label>
               <label>
-                Your occupation
+                *Your occupation
                 <select
-                  id="occupation"
+                  id="activity_type"
                   placeholder="Choose or add one..."
                   autocomplete="off"
-                  name="occupation"
+                  name="activity_type"
                 >
                   <option value="">Choose or add one...</option>
                 </select>
+                <span class="error"></span>
               </label>
               <label>
-                Organization name
+                *Organization name
                 <input type="text" name="organization" placeholder="Gallery" />
+                <span class="error"></span>
               </label>
               <label>
                 Organization website
                 <input
                   type="text"
-                  name="website_organization"
+                  name="organization_website"
                   placeholder="www.yoursite.com"
                 />
+                <span class="error"></span>
               </label>
-              <button type="submit">Send</button>
+              <label>
+                <span style="visibility: hidden">some text</span>
+                <button type="submit">Send</button>
+              </label>
             </form>
           </div>
         </div>
@@ -231,18 +239,19 @@
             </p>
           </div>
           <div class="purchase__content">
-            <form class="purchase__form">
+            <form class="purchase__form" novalidate>
               <label>
                 *Enter the name of the sculpture (Lot No.?)
                 <input
                   type="text"
-                  name="lot"
-                  id="lot"
+                  name="sculpture_name"
+                  id="sculpture_name"
                   placeholder="Horse and man"
                   autofocus
                   tabindex="0"
                   required
                 />
+                <span class="error"></span>
               </label>
               <label>
                 *Enter your email address
@@ -252,12 +261,17 @@
                   placeholder="your@email.com"
                   required
                 />
+                <span class="error"></span>
               </label>
               <label>
                 Enter your phone number
                 <input type="text" name="phone" placeholder="+1 555 555 5555" />
+                <span class="error"></span>
               </label>
-              <button type="submit">Send</button>
+              <label>
+                <span style="visibility: hidden">some text</span>
+                <button type="submit">Send</button>
+              </label>
               <p class="hint">*Required field</p>
             </form>
           </div>
