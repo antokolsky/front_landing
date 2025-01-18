@@ -101,7 +101,6 @@ const createCardData = (
   const btn = createElement("button", "card__button", "Buy art");
   // Thumbnails
   const imageList = createImageList(imagesAmount, number, images);
-  console.log(ratingCard);
 
   containerAuthorDimension.append(ratingCard, dimensionCard);
 
@@ -151,8 +150,6 @@ const createRatingCard = (num, id) => {
 
         topButton.classList.add("updated");
         bottomButton.classList.remove("updated");
-
-        alert("Изменено");
       })
       .catch((err) => console.log(err));
   });
@@ -170,8 +167,6 @@ const createRatingCard = (num, id) => {
 
         bottomButton.classList.add("updated");
         topButton.classList.remove("updated");
-
-        alert("Изменено");
       })
       .catch((err) => console.log(err));
   });

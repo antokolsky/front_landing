@@ -9,7 +9,7 @@ const bodyElementHTML = document.body;
 const bodyMargin = (x) => (bodyElementHTML.style.marginRight = x + "px");
 
 export const purchaseDialogOpen = (lot) => {
-  const inputLot = document.getElementById("lot");
+  const inputLot = document.getElementById("sculpture_name");
   if (lot) {
     inputLot.value = lot;
   }
@@ -47,11 +47,11 @@ const submitPurchase = () => {
   const form = modalElement.querySelector(".purchase__form");
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    clearErrors();
     if (window.localStorage.getItem("sculpture_order")) {
-        alert("Submitted")
       return;
     }
-    const sculpture_name = event.currentTarget.lot.value;
+    const sculpture_name = event.currentTarget.sculpture_name.value;
     const email = event.currentTarget.email.value;
     const phone = event.currentTarget.phone.value;
 
@@ -63,8 +63,36 @@ const submitPurchase = () => {
       })
       .then((ref) => {
         window.localStorage.setItem("sculpture_order", "true");
-        alert("Submitted");
+        alert("The order is accepted. We will get in touch with you.");
       })
-      .catch((er) => er.then((ref) => alert(JSON.stringify(ref))));
+      .catch((er) => {
+        er.then((errors) => {
+          setErrors(errors, form);
+        });
+      });
   });
 };
+
+function setErrors(errors, form) {
+  const fields = Object.keys(errors);
+
+  fields.forEach((field) => {
+    const errorEl = form.elements[field].parentElement.querySelector(".error");
+
+    form.elements[field].classList.add("field-error");
+    errorEl.classList.add("error_active");
+    errorEl.textContent = errors[field].join(" ");
+  });
+}
+
+function clearErrors() {
+  const errorTexts = document.querySelectorAll(".error_active");
+  const errorFields = document.querySelectorAll(".field-error");
+  errorTexts.forEach((el) => {
+    el.classList.remove("error_active");
+  });
+
+  errorFields.forEach((el) => {
+    el.classList.remove("field-error");
+  });
+}

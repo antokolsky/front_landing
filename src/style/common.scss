@@ -5,16 +5,16 @@
 
 html,
 body {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings: "slnt" 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
 }
 
 body {
@@ -27,22 +27,24 @@ body {
 }
 
 :root {
-  --light-blue: #F1F1F1;
-  --lite-blue: #9EE9DA;
-  --blue: #83DECC;
-  --blueish: #75DAC7;
-  --bright-blue: #4ACDB4;
-  --white: #FFFFFF;
-  --light-gray: #F9F9F9;
-  --gray: #F0F0F0;
-  --medium-gray: #DDDDDD;
+  --light-blue: #f1f1f1;
+  --lite-blue: #9ee9da;
+  --blue: #83decc;
+  --blueish: #75dac7;
+  --bright-blue: #4acdb4;
+  --white: #ffffff;
+  --light-gray: #f9f9f9;
+  --gray: #f0f0f0;
+  --medium-gray: #dddddd;
   --dark-gray: #545454;
   --black-night: #101020;
-  --black-gray: #3A3737;
+  --black-gray: #3a3737;
   --black: #000000;
   --black-200: rgb(0 0 0 / 8%);
   --black-300: rgb(0 0 0 / 12%);
   --black-400: rgb(0 0 0 / 40%);
-  --gray-bd: #BDBDBD;
+  --gray-bd: #bdbdbd;
   --image-ratio: 1;
+  --red: #db5959;
+  --light-red: #f3b8b8;
 }
