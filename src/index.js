@@ -3,7 +3,7 @@ import "./style/index.scss";
 import { swipedEvents } from "./components/cards/swiped-events";
 import { resizeWatcher } from "./components/header";
 import { cardLoader } from "./components/cards";
-import { STLViewerEnable } from "./components/threed";
+import { setSTLObserver } from "./components/threed";
 import { subscribeFormInit } from "./components/subscribe";
 import { purchaseDialogInit } from "./components/purchase-form";
 import { subscribeForm } from "./components/subscribe/subscribe-form";
@@ -14,10 +14,10 @@ resizeWatcher();
 
 cardLoader("#cards", "#load-more");
 
-STLViewerEnable("stlviewer");
+setSTLObserver();
 
 subscribeFormInit();
 
 purchaseDialogInit();
 
-subscribeForm()
+subscribeForm();
